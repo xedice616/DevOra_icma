@@ -73,6 +73,7 @@ export const collaborationContent = {
 export const teamContent = {
   label: 'Komandamız',
   title: ['DevOra-nın arxasındakı', 'insanlar.'],
+  subtitle: 'Bir məqsəd ətrafında birləşən fərqli bacarıqlar.',
 }
 
 export const joinContent = {

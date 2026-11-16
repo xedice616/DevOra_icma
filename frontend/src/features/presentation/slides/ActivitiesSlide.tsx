@@ -34,7 +34,7 @@ export function ActivitiesSlide() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay, ease: EASE_OUT_EXPO }}
                 style={cssVars({ '--cell-bg': accent ? 'var(--color-forest)' : 'var(--color-cream)' })}
-                className={`group relative flex min-h-[9.5rem] flex-col justify-between border-t border-l border-ink/15 p-4 transition-colors duration-500 sm:p-5 lg:min-h-0 lg:p-6 ${
+                className={`group relative flex min-h-[7.75rem] flex-col justify-between border-t border-l border-ink/15 p-3.5 transition-colors duration-500 sm:min-h-[9.5rem] sm:p-5 lg:min-h-0 lg:p-6 ${
                   accent ? 'bg-forest text-cream' : 'hover:bg-white'
                 } ${i % 2 === 1 ? 'border-r lg:border-r-0' : ''} ${i >= 4 ? 'border-b lg:border-b-0' : ''}`}
               >
@@ -45,7 +45,7 @@ export function ActivitiesSlide() {
                     className={`size-1.5 transition-transform duration-500 group-hover:rotate-45 ${accent ? 'bg-lime' : 'bg-ink/30 group-hover:bg-forest'}`}
                   />
                 </div>
-                <div className={`my-4 h-12 sm:h-16 lg:h-[clamp(3.5rem,11vh,6.5rem)] ${accent ? 'text-lime' : 'text-ink'}`}>
+                <div className={`my-3 h-10 sm:my-4 sm:h-16 lg:h-[clamp(3.5rem,11vh,6.5rem)] ${accent ? 'text-lime' : 'text-ink'}`}>
                   <ActivityGlyph name={area.glyph} delay={delay + 0.3} />
                 </div>
                 <h3 className="max-w-[15rem] text-[clamp(0.98rem,min(1.5vw,2.5vh),1.45rem)] leading-[1.1] font-semibold tracking-[-0.025em]">

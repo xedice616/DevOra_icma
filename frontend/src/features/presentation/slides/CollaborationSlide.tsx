@@ -44,9 +44,9 @@ export function CollaborationSlide() {
 
       {/* identities */}
       <div className="mt-10 grid flex-1 grid-cols-1 md:mt-8 md:grid-cols-2">
-        <div className="-mx-5 flex items-center gap-5 bg-forest px-5 py-8 sm:-mx-8 sm:px-8 md:mx-0 md:bg-transparent md:px-0 md:py-0 md:pr-[10%]">
+        <div className="-mx-5 flex items-center gap-5 bg-forest px-5 py-5 sm:-mx-8 sm:py-8 sm:px-8 md:mx-0 md:bg-transparent md:px-0 md:py-0 md:pr-[10%]">
           <Reveal delay={0.7} className="shrink-0">
-            <LogoBadge className="size-[min(24vw,17vh)] md:size-[min(11vw,19vh)]" />
+            <LogoBadge className="size-[min(20vw,13vh)] md:size-[min(11vw,19vh)]" />
           </Reveal>
           <Reveal delay={0.85}>
             <Identity name={brand.name} descriptor={brand.descriptor} />
@@ -55,7 +55,7 @@ export function CollaborationSlide() {
 
         <Seam orientation="horizontal" teeth={12} className="relative -mx-5 w-auto sm:-mx-8 md:hidden" />
 
-        <div className="-mx-5 flex items-center gap-5 bg-ink px-5 py-8 sm:-mx-8 sm:px-8 md:mx-0 md:justify-end md:px-0 md:py-0 md:pl-[10%]">
+        <div className="-mx-5 flex items-center gap-5 bg-ink px-5 py-5 sm:-mx-8 sm:py-8 sm:px-8 md:mx-0 md:justify-end md:px-0 md:py-0 md:pl-[10%]">
           <Reveal delay={1} className="md:order-2">
             <PartnerMark partner={partner} />
           </Reveal>
@@ -92,7 +92,7 @@ function Identity({ name, descriptor }: { name: string; descriptor: string }) {
 
 /** Partner's official logo when supplied; until then a neutral typographic mark. */
 function PartnerMark({ partner }: { partner: PartnerIdentity }) {
-  const size = 'size-[min(24vw,17vh)] md:size-[min(11vw,19vh)]'
+  const size = 'size-[min(20vw,13vh)] md:size-[min(11vw,19vh)]'
   if (partner.logo) {
     return <img src={partner.logo} alt={`${partner.name} loqosu`} className={`${size} object-contain`} />
   }

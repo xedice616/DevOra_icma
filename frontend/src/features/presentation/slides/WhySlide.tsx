@@ -24,24 +24,27 @@ export function WhySlide() {
       </div>
 
       {/* the three ideas, read left to right as one continuous line */}
-      <ol className="mt-auto grid grid-cols-1 pt-10 sm:grid-cols-3 sm:pt-12">
+      <ol className="mt-auto grid grid-cols-1 pt-7 sm:grid-cols-3 sm:pt-12">
         {whyContent.ideas.map((idea, i) => (
-          <li key={idea.title} className={`flex flex-col pb-5 sm:pb-0 ${i ? 'sm:border-l sm:border-ink/15 sm:pl-6' : ''} sm:pr-6`}>
+          <li key={idea.title} className={`flex flex-col pb-4 sm:pb-0 ${i ? 'sm:border-l sm:border-ink/15 sm:pl-6' : ''} sm:pr-6`}>
             <div className="flex items-baseline gap-3">
               <Reveal delay={0.9 + i * 0.35} y={10} className="type-index">
                 {String(i + 1).padStart(2, '0')}
               </Reveal>
               <Rule delay={0.9 + i * 0.35} className="flex-1 opacity-15" />
             </div>
-            <div className="mt-2 w-2/3 sm:mt-6 sm:w-full">
-              <IdeaStroke step={i as 0 | 1 | 2} delay={1 + i * 0.35} />
+            {/* phone: text beside a small stroke; tablet+: stroke above the text */}
+            <div className="mt-2 flex items-center gap-4 sm:mt-0 sm:block">
+              <div className="order-2 w-24 shrink-0 sm:order-none sm:mt-6 sm:w-full">
+                <IdeaStroke step={i as 0 | 1 | 2} delay={1 + i * 0.35} />
+              </div>
+              <Reveal delay={1.15 + i * 0.35} className="order-1 flex-1 sm:mt-6">
+                <h3 className="text-[clamp(1.5rem,min(3.2vw,5.4vh),3.4rem)] leading-none font-semibold tracking-[-0.04em] [font-stretch:108%]">
+                  {idea.title}
+                </h3>
+                <p className="mt-1.5 max-w-[18rem] text-[0.92rem] leading-snug text-ink/70 sm:mt-3 sm:text-[0.98rem]">{idea.text}</p>
+              </Reveal>
             </div>
-            <Reveal delay={1.15 + i * 0.35} className="mt-2 sm:mt-6">
-              <h3 className="text-[clamp(1.75rem,min(3.2vw,5.4vh),3.4rem)] leading-none font-semibold tracking-[-0.04em] [font-stretch:108%]">
-                {idea.title}
-              </h3>
-              <p className="mt-3 max-w-[18rem] text-[0.98rem] leading-snug text-ink/70">{idea.text}</p>
-            </Reveal>
           </li>
         ))}
       </ol>

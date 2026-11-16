@@ -1,35 +1,73 @@
 /**
- * DevOra komandası — exactly five members.
+ * DevOra komandası — the five founding members.
  *
- * Fill in each member below. Any field left as `null` renders as a clearly
- * marked placeholder on the "Komandamız" slide.
+ * Names are kept exactly as supplied. Roles and summaries are written in
+ * Azerbaijani, like the rest of the presentation.
  *
  *  - photo:    put the image in `src/assets/team/` and import it at the top of
- *              this file, e.g. `import aliPhoto from '../assets/team/ali.webp'`
- *              (4:5 portrait, ~900×1125px, .webp recommended)
- *  - linkedin: full profile URL, e.g. 'https://www.linkedin.com/in/username'
+ *              this file, e.g. `import khadijaPhoto from '../assets/team/khadija.webp'`
+ *              (4:5 portrait, ~800×1000px, .webp recommended). `null` → initials.
+ *  - linkedin: full profile URL, e.g. 'https://www.linkedin.com/in/username'.
+ *              `null` → a muted, non-clickable LinkedIn label.
  */
+import emilPhoto from '../assets/team/emil-alishov.jpg'
+import cahidPhoto from '../assets/team/cahid-mahmudzade.jpg'
+import adamPhoto from '../assets/team/adam-hasanov.jpg'
+import mehinPhoto from '../assets/team/mehin-meshediyeva.jpg'
+import khadijaPhoto from '../assets/team/khadija-ahmadova.jpg'
+
 export interface TeamMember {
   id: string
-  name: string | null
-  role: string | null
-  bio: string | null
+  name: string
+  role: string
+  summary: string
   photo: string | null
   linkedin: string | null
 }
 
 export const teamMembers: TeamMember[] = [
-  { id: 'member-1', name: null, role: null, bio: null, photo: null, linkedin: null },
-  { id: 'member-2', name: null, role: null, bio: null, photo: null, linkedin: null },
-  { id: 'member-3', name: null, role: null, bio: null, photo: null, linkedin: null },
-  { id: 'member-4', name: null, role: null, bio: null, photo: null, linkedin: null },
-  { id: 'member-5', name: null, role: null, bio: null, photo: null, linkedin: null },
+  {
+    id: 'khadija-ahmadova',
+    name: 'Khadija Ahmadova',
+    role: 'İcma rəhbəri',
+    summary: 'İcmaya rəhbərlik edir, onun ümumi strategiyasına, istiqamətinə və inkişafına nəzarət edir.',
+    photo: khadijaPhoto,
+    linkedin: null,
+  },
+  {
+    id: 'cahid-mahmudzade',
+    name: 'Cahid Mahmudzade',
+    role: 'Frontend mentoru',
+    summary: 'Frontend fəaliyyətlərinə dəstək olur və üzvlərə frontend texnologiyalarında yol göstərir.',
+    photo: cahidPhoto,
+    linkedin: null,
+  },
+  {
+    id: 'adam-hasanov',
+    name: 'Adam Hasanov',
+    role: 'Texniki rəhbər',
+    summary: 'Texniki istiqaməti koordinasiya edir və icma layihələrinin texniki inkişafına dəstək olur.',
+    photo: adamPhoto,
+    linkedin: null,
+  },
+  {
+    id: 'mehin-meshediyeva',
+    name: 'Mehin Meshediyeva',
+    role: 'İcma və əməliyyatlar koordinatoru',
+    summary: 'Daxili kommunikasiyanı, üzvlərin fəallığını və icmanın əməliyyatlarını koordinasiya edir.',
+    photo: mehinPhoto,
+    linkedin: null,
+  },
+  {
+    id: 'emil-alishov',
+    name: 'Emil Alishov',
+    role: 'Backend mentoru',
+    summary: 'Backend fəaliyyətlərinə dəstək olur və üzvlərə backend texnologiyalarında yol göstərir.',
+    photo: emilPhoto,
+    linkedin: null,
+  },
 ]
 
 export const teamPlaceholders = {
-  name: 'Ad Soyad',
-  role: 'Vəzifə',
-  bio: 'Qısa təqdimat burada yer alacaq.',
-  photo: 'Foto',
   linkedinMissing: 'LinkedIn profili hələ əlavə edilməyib',
 } as const
