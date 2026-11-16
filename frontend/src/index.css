@@ -1,0 +1,171 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+
+/* ==================================================================
+   DevOra — design system
+   ------------------------------------------------------------------
+   Surfaces (in order of use)
+     forest  #123B2F  primary brand surface — opening, ecosystem, closing
+     cream   #F3F0E7  light editorial surface — ideas, activities, team
+     ink     #101412  dark contrast surface — community, collaboration
+   Accent
+     lime    #B8D99A  ONE accent per slide. On dark surfaces as colour,
+                      on cream only as a filled highlight behind ink text.
+   White    #FFFFFF  reserved for the brightest type on ink.
+
+   Type: Archivo (variable width + weight) for everything; JetBrains
+   Mono only for numerals and indices.
+     display   wdth 112–125, wght 700–800, very tight tracking
+     title     wdth 100,     wght 600
+     label     wdth 100,     wght 600, uppercase, +0.14em
+     body      wdth 100,     wght 400
+================================================================== */
+@theme {
+  --color-forest: #123b2f;
+  --color-forest-deep: #0d2c23;
+  --color-cream: #f3f0e7;
+  --color-ink: #101412;
+  --color-lime: #b8d99a;
+  --color-white: #ffffff;
+
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --ease-editorial: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 1.5px solid var(--color-lime);
+    outline-offset: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Type scale — fluid, bounded by both width and height so short
+   laptop screens keep their composition.
+------------------------------------------------------------------- */
+@utility type-hero {
+  font-stretch: 118%;
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  line-height: 0.86;
+  font-size: clamp(4.5rem, min(20.5vw, 29vh), 22rem);
+}
+@utility type-display {
+  font-stretch: 108%;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  font-size: clamp(2.6rem, min(7.4vw, 12.5vh), 8.5rem);
+}
+@utility type-title {
+  font-stretch: 100%;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  font-size: clamp(2.1rem, min(5.2vw, 8.8vh), 5.75rem);
+}
+@utility type-lead {
+  font-stretch: 100%;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.4;
+  font-size: clamp(1.05rem, min(1.45vw, 2.5vh), 1.45rem);
+}
+@utility type-label {
+  font-stretch: 100%;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+@utility type-index {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------
+   Ambient motion — used sparingly, all disabled for reduced motion.
+------------------------------------------------------------------- */
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pulse-outline {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+@keyframes travel {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.anim-blink {
+  animation: blink 1.1s steps(1) infinite;
+}
+.anim-pulse-outline {
+  animation: pulse-outline 2.2s var(--ease-editorial) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.anim-travel {
+  animation: travel var(--dur, 14s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-blink,
+  .anim-pulse-outline,
+  .anim-travel {
+    animation: none !important;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
